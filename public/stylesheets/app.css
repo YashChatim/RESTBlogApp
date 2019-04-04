@@ -1,0 +1,15 @@
+body {
+    background: lightblue;
+}
+
+.icon {
+    font-size: 2.5em;
+}
+
+.container.main {
+    margin-top: 7.5em;
+}
+
+#delete {
+    display: inline-block;
+}

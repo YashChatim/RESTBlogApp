@@ -1,0 +1,35 @@
+<% include ./partials/header %>
+
+<div class="ui main text container">
+    <div class="ui main header">My Top most played League of Legends champs</div>
+    
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <% blogs.forEach(function(blog){ %>
+                <div class="item">
+                    <div class="image">
+                        <img src= "<%= blog.image %>">
+                    </div>
+                    
+                    <div class="content">
+                        <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+                        
+                        <div class="meta">
+                            <span><%= blog.created.toDateString() %></span>
+                        </div>
+                        
+                        <div class="description">
+                             <p><%- blog.body.substring(0,300) %> ... </p> <!-- <%- %> gives sanitized content , substring(0,300) - displays only first 300 characters on index page, rest on SHOW page -->
+                        </div>
+                        
+                        <div class="more">
+                            <a class="ui floated blue button" href="/blogs/<%= blog._id %>">More info</a> <!-- need "" around the URL, so need to add <%= %> inside "" -->
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>

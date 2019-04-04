@@ -1,0 +1,27 @@
+<% include ./partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit <%= blog.title %></div>
+    
+    <form class="ui form"action="/blogs/<%= blog._id %>?_method=PUT" method="POST"> <!-- ?_method=PUT - is method-overriding where POST request is overriden as PUT request in this case. We use moethod-overriding because html forms only support GET/POST requests -->
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="blog[title]" value="<%= blog.title %>"> <!-- Pre-determined value of title is displayed in the title space of the form -->
+        </div>
+        
+        <div class="field">
+            <label>Image</label>
+            <input type="text" name="blog[image]" value="<%= blog.image %>">
+        </div>
+        
+        <div class="field">
+            <label>Blog content</label>
+            <textarea name="blog[body]"><%= blog.body %></textarea>
+        </div>
+        
+        <input class="ui grey button" type="submit">
+        
+    </form>
+</div>
+
+<% include ./partials/footer %>
