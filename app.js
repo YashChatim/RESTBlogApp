@@ -6,10 +6,9 @@ const methodOverride = require("method-override");
 const expressSanitizer = require("express-sanitizer");
 
 
+var url = process.env.DATABASEURL || "mongodb://localhost/restful_blog_app" // process.env.DATABASEURL - environmental variable for database
 
-mongoose.connect(process.env.DATABASEURL);
-
-// mongoose.connect("mongodb://localhost/restful_blog_app", { useNewUrlParser: true }); // connected to restful_blog_app database
+mongoose.connect(url, { useNewUrlParser: true });
 // mongoose.connect("mongodb+srv://yash:poke0796@restblogapp-jsjgr.mongodb.net/test?retryWrites=true", { useNewUrlParser: true }); // connected to mongoLab database
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer()); // always needs to be after bodyParser.urlencoded
