@@ -8,9 +8,11 @@ const expressSanitizer = require("express-sanitizer");
 
 var url = process.env.DATABASEURL || "mongodb://localhost/restful_blog_app" // process.env.DATABASEURL - environmental variable for database
 
-mongoose.connect(url, { useNewUrlParser: true });
-// mongoose.connect("mongodb+srv://yash:poke0796@restblogapp-jsjgr.mongodb.net/test?retryWrites=true", { useNewUrlParser: true }); // connected to mongoLab database
-app.use(bodyParser.urlencoded({extended: true}));
+mongoose.connect(url, { 
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true 
+});
 app.use(expressSanitizer()); // always needs to be after bodyParser.urlencoded
 app.use(express.static(__dirname + "/public")); // __dirname - directory where script was run
 app.use(methodOverride("_method")); // method-override listens for _method
