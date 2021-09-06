@@ -111,8 +111,14 @@ app.get("/blogs/:id/edit", (req,res) => {
 
 // UPDATE route
 app.put("/blogs/:id", (req, res) => {
-    req.body.blog.body = req.sanitize(req.body.blog.body);
-    Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => { // req.params.id - 1st parameter is the defined id, req.body.blog - 2nd parameter is new data
+    // req.body.blog.body = req.sanitize(req.body.blog.body);
+    let body = req.body.blog;
+    let bodyData = {
+        title: body.title,
+        image: body.image,
+        body: body.body,
+    }
+    Blog.findByIdAndUpdate(req.params.id, {$set: bodyData}, (err, updatedBlog) => { // req.params.id - 1st parameter is the defined id, req.body.blog - 2nd parameter is new data
         if(err) {
             res.redirect("/blogs");
         }
