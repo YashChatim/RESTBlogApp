@@ -67,7 +67,7 @@ app.get("/blogs/new", (req,res) => {
 
 
 // CREATE route
-app.post("/blogs", (req, res) => {
+app.post("/blogs/added", (req, res) => {
     // create blog
     req.body.blog.body = req.sanitize(req.body.blog.body); // sanitizes the data inputted by the user, so that if users adds html tags, they will be applied to the text without displaying the tags 
     Blog.create(req.body.blog, (err, newBlog) => { // req.body.blog - contains title, image and body data
