@@ -82,9 +82,9 @@ app.post("/blogs/added", async(req, res) => {
     });
     */
     let blog = new Blog({
-        title: req.body.title,
-        image: req.body.image,
-        body: req.body.body
+        title: req.body.blog.title,
+        image: req.body.blog.image,
+        body: req.body.blog.body
     });
 
     try {
