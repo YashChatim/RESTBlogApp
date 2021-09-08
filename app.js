@@ -13,6 +13,8 @@ mongoose.connect(url, {
     useFindAndModify: false,
     useUnifiedTopology: true 
 });
+app.use(express.json()); //Used to parse JSON bodies
+app.use(express.urlencoded()); //Parse URL-encoded bodies
 app.use(expressSanitizer()); // always needs to be after bodyParser.urlencoded
 app.use(express.static(__dirname + "/public")); // __dirname - directory where script was run
 app.use(methodOverride("_method")); // method-override listens for _method
@@ -82,9 +84,9 @@ app.post("/blogs/added", async(req, res) => {
     });
     */
     let blog = new Blog({
-        title: req.body.blog.title,
-        image: req.body.blog.image,
-        body: req.body.blog.body
+        title: req.body.title,
+        image: req.body.image,
+        body: req.body.body
     });
 
     try {
