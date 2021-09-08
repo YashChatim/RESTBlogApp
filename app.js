@@ -70,19 +70,6 @@ app.get("/blogs/new", (req,res) => {
 
 // CREATE route
 app.post("/blogs/added", async(req, res) => {
-    /*
-    // create blog
-    req.body.blog.body = req.sanitize(req.body.blog.body); // sanitizes the data inputted by the user, so that if users adds html tags, they will be applied to the text without displaying the tags 
-    Blog.create(req.body.blog, (err, newBlog) => { // req.body.blog - contains title, image and body data
-        if(err) {
-            res.render("new.ejs");
-        }
-        else {
-            // redirect to index page
-            res.redirect("/blogs");
-        }
-    });
-    */
     let blog = new Blog({
         title: req.body.title,
         image: req.body.image,
@@ -90,12 +77,10 @@ app.post("/blogs/added", async(req, res) => {
     });
 
     try {
-        let a = await blog.save();
-        res.json(a);
-        // res.redirect("/blogs");
+        await blog.save();
+        res.redirect("/blogs");
     } catch {
-        res.send("error");
-        // res.render("new.ejs");
+        res.render("new.ejs");
     }
 });
 
