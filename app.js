@@ -69,7 +69,7 @@ app.get("/blogs/new", (req,res) => {
 
 
 // CREATE route
-app.post("/blogs/added", async(req, res) => {
+app.post("/blogs", async(req, res) => {
     let blog = new Blog({
         title: req.body.title,
         image: req.body.image,
