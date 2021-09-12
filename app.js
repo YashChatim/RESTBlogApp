@@ -113,22 +113,15 @@ app.get("/blogs/:id/edit", (req,res) => {
 
 
 // UPDATE route
-app.put("/blogs/:id", (req, res) => {
-    // req.body.blog.body = req.sanitize(req.body.blog.body);
-    let body = req.body.blog;
-    let bodyData = {
-        title: body.title,
-        image: body.image,
-        body: body.body,
+app.put("/blogs/:id", async(req, res) => {
+    try {
+        let blog = await Blog.findById(req.params.id);
+        Object.assign(blog, req.body);
+        blog.save();
+        res.redirect("/blogs/" + req.params.id); // redirects to the right show page with specified id
+    } catch {
+        res.redirect("/blogs");
     }
-    Blog.findByIdAndUpdate(req.params.id, {$set: bodyData}, (err, updatedBlog) => { // req.params.id - 1st parameter is the defined id, req.body.blog - 2nd parameter is new data
-        if(err) {
-            res.redirect("/blogs");
-        }
-        else {
-            res.redirect("/blogs/" + req.params.id); // redirects to the right show page with specified id
-        }
-    });
 });
 
 
