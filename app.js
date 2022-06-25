@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const expressSanitizer = require("express-sanitizer");
 
+require("dotenv").config();
 
 var url = process.env.DATABASEURL || "mongodb://localhost/restful_blog_app" // process.env.DATABASEURL - environmental variable for database
 
