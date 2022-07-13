@@ -7,7 +7,8 @@ const expressSanitizer = require("express-sanitizer");
 
 require("dotenv").config();
 
-var url = process.env.DATABASEURL || "mongodb://localhost/restful_blog_app" // process.env.DATABASEURL - environmental variable for database
+// mongodb://localhost/restful_blog_app - local url
+var url = process.env.DATABASEURL // process.env.DATABASEURL - environmental variable for database
 
 mongoose.connect(url, { 
     useNewUrlParser: true,
