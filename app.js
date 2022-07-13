@@ -5,12 +5,12 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const expressSanitizer = require("express-sanitizer");
 
-require("dotenv").config();
+// require("dotenv").config();
 
 // mongodb://localhost/restful_blog_app - local url
-var url = process.env.DATABASEURL // process.env.DATABASEURL - environmental variable for database
+// var url = process.env.DATABASEURL // process.env.DATABASEURL - environmental variable for database
 
-mongoose.connect(url, { 
+mongoose.connect("mongodb+srv://yash:ZciZOvzDBTfy86KL@restblogapp.jsjgr.mongodb.net/?retryWrites=true&w=majority", { 
     useNewUrlParser: true,
     useFindAndModify: false,
     useUnifiedTopology: true 
